@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
-import ReactAudioPlayer from 'react-audio-player';
 
 
 
@@ -25,14 +24,19 @@ function Page() {
     const { data: page_data, error: page_error } = useQuery(page_query, {
         variables: { identifiers: ["b564574c-947c-492c-9823-e94447c35c0b"] }
     });
+    
+
+    let audioPlayer;
 
     if (page_data) {
-        console.log(page_data.Pages[0].accessibilityAudioAssetUrl)
         useEffect(() => {
             setTitle(page_data.Pages[0].title)
             setBody(page_data.Pages[0].body)
-            setUrl(page_data.Pages[0].accessibilityAudioAssetUrl)
         }, [])
+        audioPlayer = <audio controls>
+            <source src={page_data.Pages[0].accessibilityAudioAssetUrl} type="audio/mpeg"/>
+            Your browser does not support the audio element.
+        </audio>
     }
 
 
@@ -40,10 +44,8 @@ function Page() {
         <div>
             <h1>{title}</h1>
             <h1>{body}</h1>
-            <ReactAudioPlayer
-                src={url}
-                controls
-            />
+            { audioPlayer }
+            
         </div>
     );
 }
