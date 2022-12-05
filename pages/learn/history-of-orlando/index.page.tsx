@@ -22,7 +22,7 @@ function Page() {
     }`
 
     const { data: page_data, error: page_error } = useQuery(page_query, {
-        variables: { identifiers: ["641a8013-4213-49be-9783-60ccff32e85a"] }
+        variables: { identifiers: ["6a653ef2-7229-4b64-8d66-305c70841e3f"] }
     });
     
 
@@ -44,14 +44,8 @@ function Page() {
         <div>
             <h1>{title}</h1>
             <h1>{body}</h1>
+            <h1>Hi</h1>
             { audioPlayer }
-            <h1
-                className='bg-gray-400 rounded-lg w-32 mt-8 text-center hover:bg-gray-300 border-2 cursor-pointer text-2xl'
-                onClick={() => {
-                    location.href = "https://anticoregular.thoughtindustries.com/learn/course/history-of-philly/sports/eagles"
-                }}
-                >Next Page</h1>
-            
         </div>
     );
 }

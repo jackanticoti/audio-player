@@ -3,6 +3,8 @@ import { gql, useQuery, useMutation } from '@apollo/client';
 
 function Page() {
 
+    const [name, setName] = useState("")
+
     const query = gql`
     query {
         CurrentUser {
@@ -14,17 +16,15 @@ function Page() {
 
     const { data, error } = useQuery(query);
 
-    let hello
-
-    if (data) {
-        hello = <h1>Hello User</h1>
-    } else {
-        hello = <h1>Hello World</h1>
-    }
+    useEffect(() => {
+        if (data) {
+            setName(data.CurrentUser.firstName)
+        }
+    })
 
     return (
         <div>
-            { hello }
+            <h1>Your name is: {name}</h1>
         </div>
     );
 }
