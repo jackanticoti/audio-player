@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
-
-
+import NavBar from '../../../components/Navigation/NavBar';
 
 function Page() {
 
@@ -42,10 +41,23 @@ function Page() {
 
     return (
         <div>
-            <h1>{title}</h1>
-            <h1>{body}</h1>
-            <h1>Hi</h1>
-            { audioPlayer }
+            <NavBar/>
+            <div className='px-32'>
+                <div className='flex flex-row justify-between mt-20'>
+                    <h1 className='text-5xl'>{title}</h1>
+                    { audioPlayer }
+                </div>
+                <h1 className='mt-10 text-xl'>{body.replace(/<[^>]+>/g, '')}</h1>
+                <div className='flex flex-row justify-end mt-10'>
+                    <h1
+                        onClick={() => {
+                            location.href = "https://anticoregular.thoughtindustries.com/dashboard"
+                        }}
+                        className='bg-gray-400 rounded-lg w-64 mt-8 text-center hover:bg-gray-300 border-2 cursor-pointer text-2xl'>
+                            Complete course
+                    </h1>
+                </div>
+            </div>
         </div>
     );
 }

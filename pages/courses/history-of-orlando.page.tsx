@@ -36,7 +36,7 @@ function Page() {
     let button;
     if (currentUser?.firstName) {
         button = <h1
-            className='bg-gray-400 rounded-lg w-32 mt-8 text-center hover:bg-gray-300 border-2 cursor-pointer text-2xl'
+            className='bg-gray-400 rounded-lg w-full mt-8 text-center hover:bg-gray-300 border-2 cursor-pointer text-xl'
             onClick={() => {
                 location.href = "https://anticoregular.thoughtindustries.com/learn/history-of-orlando"
             }}>
@@ -68,18 +68,22 @@ function Page() {
         <div>
             <NavBar/>
             <div className='flex flex-row justify-between'>
-                <div className='ml-10'>
+                <div className='ml-10 mt-8'>
                     <h1 className='t text-3xl'>{course?.title}</h1>
                     <h1>{course?.courseGroup?.description}</h1>
-                    <img src={course?.courseGroup?.asset}></img>
+                    <img className='h-96' src={course?.courseGroup?.asset}></img>
                 </div>
-                <div className='mr-10'>
-                    <div>
-                        { button }
-                        <h1>What's Included</h1>
-                        <h1>Access your courses anytime, anywhere, with a computer, tablet or smartphone</h1>
-                        <h1>Videos, quizzes and interactive content designed for a proven learning experience</h1>
-                        <h1>Unlimited access. Take your courses at your time and pace</h1>
+                <div className='mr-10 mt-10'>
+                    { button }
+                    <div className='mt-10'>
+                        <h1 className='text-xl h-10 border-b-2 border-slate-400'>
+                            What's Included
+                        </h1>
+                        <div className='pl-10 mt-5'>
+                        <h1 className='my-3'>Access your courses anytime, anywhere, with a computer, tablet or smartphone</h1>
+                        <h1 className='my-3'>Videos, quizzes and interactive content designed for a proven learning experience</h1>
+                        <h1 className='my-3'> Unlimited access. Take your courses at your time and pace</h1>
+                        </div>
                     </div>
                 </div>
             </div>
